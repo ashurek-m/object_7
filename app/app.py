@@ -1,6 +1,8 @@
 from pdf2image import convert_from_path
 import os
 from pathlib import Path
+import pathlib
+import glob
 
 
 outputDir = 'output/'
@@ -13,17 +15,17 @@ def convert(file, outputDir):
     pages = convert_from_path(file, 500)
     counter = 1
     for page in pages:
-        myfile = outputDir + 'output' + str(counter) + '.jpg'
+        myfile = outputDir / (str(counter) + '.jpg')
         counter += 1
         page.save(myfile, 'JPEG')
 
 
-#file = 'план.pdf'
-#convert(file, outputDir)
-#print(Path(__file__).parent.parent / 'input')
+input_dir = Path(__file__).parent.parent / 'input'
+output_dir = Path(__file__).parent.parent / 'output'
 
-current_dir = Path.cwd()
-home_dir = Path.home()
+file_list = glob.glob(f'{str(input_dir)}\\*.pdf')
 
-print(current_dir)
-print(home_dir)
+for file in file_list:
+    convert(file, output_dir)
+
+print(type(output_dir))
