@@ -1,5 +1,6 @@
 from pdf2image import convert_from_path
 import os
+from pathlib import Path
 
 
 outputDir = 'output/'
@@ -19,4 +20,10 @@ def convert(file, outputDir):
 
 #file = 'план.pdf'
 #convert(file, outputDir)
-print(os.path.splitdrive(os.path.splitdrive(r"D:\Python's_project\object_7\app\output")))
+#print(Path(__file__).parent.parent / 'input')
+
+current_dir = Path.cwd()
+home_dir = Path.home()
+
+print(current_dir)
+print(home_dir)
