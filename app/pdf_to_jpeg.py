@@ -12,7 +12,7 @@ def convert(file, outputDir):
     if not os.path.exists(outputDir):
         os.makedirs(outputDir)
 
-    pages = convert_from_path(file, 500)
+    pages = convert_from_path(file, 250)
     counter = 1
     for page in pages:
         myfile = outputDir / (file.split('\\')[-1][0:-4] + f'_{str(counter)}' + '.jpg')
