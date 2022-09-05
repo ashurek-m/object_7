@@ -10,3 +10,4 @@ IPython==8.4.0
 tqdm==4.64.0
 Pillow==9.2.0
 numpy==1.23.2
+pandas==1.4.4
