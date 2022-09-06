@@ -13,6 +13,7 @@ from torch.utils.data import DataLoader
 from tqdm import tqdm
 from pathlib import Path
 import glob
+from my_object import CustomImageDataset
 
 
 Image.MAX_IMAGE_PIXELS = None
@@ -23,12 +24,14 @@ plt.rc('font', size=30)
 output_dir = Path(__file__).parent.parent / 'output'
 file_list = glob.glob(f'{str(output_dir)}\\*.jpg')
 
-dataset = []
-counter = 0
+data = CustomImageDataset(img_dir=file_list, transform=T.ToTensor())
 
-for file in file_list:
-    img = Image.open(file)
-    img_tensor = T.ToTensor()(img).unsqueeze(0)
-    dataset.append(img_tensor)
-
-print(torch.FloatTensor(dataset))
+print(data)
+'''
+transforms = T.Compose(
+    [
+        T.ToTensor(),
+        T.Normalize(mean=means, std=stds)
+    ]
+)
+'''

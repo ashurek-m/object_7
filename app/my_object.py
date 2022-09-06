@@ -3,6 +3,7 @@ import pandas as pd
 from torch.utils.data import Dataset
 from torchvision.io import read_image
 from typing import List
+from PIL import Image
 
 
 class CustomImageDataset(Dataset):
@@ -14,5 +15,7 @@ class CustomImageDataset(Dataset):
         return len(self.img_dir)
 
     def __getitem__(self, item):
+        img = Image.open(self.img_dir[item])
         if self.transform:
-            return self.transform(self.img_dir[item])
+            tensors = self.transform(img)
+            return tensors
