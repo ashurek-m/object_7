@@ -1,5 +1,4 @@
 import warnings
-
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
@@ -26,7 +25,11 @@ file_list = glob.glob(f'{str(output_dir)}\\*.jpg')
 
 data = CustomImageDataset(img_dir=file_list, transform=T.ToTensor())
 
-print(data)
+for dir in file_list:
+    img = Image.open(dir)
+    print(img.size)
+
+print(data.data().size())
 '''
 transforms = T.Compose(
     [
