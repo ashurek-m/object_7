@@ -23,13 +23,13 @@ plt.rc('font', size=30)
 output_dir = Path(__file__).parent.parent / 'output'
 file_list = glob.glob(f'{str(output_dir)}\\*.jpg')
 
-data = CustomImageDataset(img_dir=file_list, transform=T.ToTensor())
+data = CustomImageDataset(img_dir=file_list, transform=T.ToTensor(), train=None)
 
 for dir in file_list:
     img = Image.open(dir)
     print(img.size)
 
-print(data.data().size())
+print(data.data.size())
 '''
 transforms = T.Compose(
     [
