@@ -7,11 +7,12 @@ import torch
 
 class CustomImageDataset(Dataset):
     """
-    Специальный клас для датасета из картинок
+    Специальный клас для датасета из картинок большого формата
     не оптимально сделана функция data, при больших объемах данных будет работать долго
     """
 
     def __init__(self, img_dir: List, transform: object = None, train: bool = False):
+        super().__init__()
         self.img_dir = img_dir
         self.transform = transform
         self.train = train
@@ -24,7 +25,7 @@ class CustomImageDataset(Dataset):
 
     # noinspection PyUnusedLocal
     def __getitem__(self, item):
-        img = Image.(self.img_dir[item])
+        img = Image.open(self.img_dir[item])
         if self.transform:
             img = self.transform(Image.open(self.img_dir[item]))
         return img

@@ -19,10 +19,14 @@ def convert(name_file, outputDir):
         page.save(myfile, 'JPEG')
 
 
-input_dir = Path(__file__).parent.parent / 'input'
-output_dir = Path(__file__).parent.parent / 'output'
+if __name__ in "__main__":
+    input_dir = Path(__file__).parent.parent / 'input'
+    output_dir = Path(__file__).parent.parent / 'output'
 
-file_list = glob.glob(f'{str(input_dir)}\\*.pdf')
+    file_list = glob.glob(f'{str(input_dir)}\\*.pdf')
+    target_list = []
 
-for file in file_list:
-    convert(file, output_dir)
+    for file in file_list:
+        convert(file, output_dir)
+        target_list.append(file.split('\\')[-1].rsplit('.', 1)[0])
+        # print(file.split('\\')[-1].rsplit('.', 1)[0])
