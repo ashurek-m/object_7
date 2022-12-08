@@ -25,7 +25,7 @@ class CustomImageDataset(Dataset):
 
     # noinspection PyUnusedLocal
     def __getitem__(self, item):
-        img = Image.open(self.img_dir[item])
+        self.img = Image.open(self.img_dir[item])
         if self.transform:
-            img = self.transform(Image.open(self.img_dir[item]))
-        return img
+            self.img = self.transform(Image.open(self.img_dir[item]))
+        return self.img

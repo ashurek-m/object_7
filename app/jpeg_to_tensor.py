@@ -27,9 +27,10 @@ data = CustomImageDataset(img_dir=file_list)
 
 transform = T.Compose(
     [
+        T.Grayscale(),
         T.ToTensor()
     ]
 )
 data1 = CustomImageDataset(img_dir=file_list, transform=transform)
 
-print(data1)
+print(data1[0].size())
